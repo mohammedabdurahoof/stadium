@@ -46,25 +46,32 @@ use App\Http\Controllers\form_elements\InputGroups;
 use App\Http\Controllers\form_layouts\VerticalForm;
 use App\Http\Controllers\form_layouts\HorizontalForm;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\StadiumController;
 use App\Http\Controllers\tables\Basic as TablesBasic;
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 });
 
 Route::get('/dashboard-2', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard2');
-
+  return view('dashboard');
+})
+  ->middleware(['auth', 'verified'])
+  ->name('dashboard2');
 
 // Main Page Route
-Route::get('/dashboard', [Dashboard::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [Dashboard::class, 'index'])
+  ->middleware(['auth', 'verified'])
+  ->name('dashboard');
 
 // Admins
-Route::get('/admins', [Admins::class, 'index'])->middleware(['auth', 'verified'])->name('admins');
+Route::get('/admins', [Admins::class, 'index'])
+  ->middleware(['auth', 'verified'])
+  ->name('admins');
 
 // News
-Route::resource('/news', NewsController::class);
+Route::resource('/news', NewsController::class)->middleware(['auth', 'verified']);
+Route::resource('/stadium', StadiumController::class)->middleware(['auth', 'verified']);
 
 // layout
 Route::get('/layouts/without-menu', [WithoutMenu::class, 'index'])->name('layouts-without-menu');
@@ -74,11 +81,19 @@ Route::get('/layouts/container', [Container::class, 'index'])->name('layouts-con
 Route::get('/layouts/blank', [Blank::class, 'index'])->name('layouts-blank');
 
 // pages
-Route::get('/pages/account-settings-account', [AccountSettingsAccount::class, 'index'])->name('pages-account-settings-account');
-Route::get('/pages/account-settings-notifications', [AccountSettingsNotifications::class, 'index'])->name('pages-account-settings-notifications');
-Route::get('/pages/account-settings-connections', [AccountSettingsConnections::class, 'index'])->name('pages-account-settings-connections');
+Route::get('/pages/account-settings-account', [AccountSettingsAccount::class, 'index'])->name(
+  'pages-account-settings-account'
+);
+Route::get('/pages/account-settings-notifications', [AccountSettingsNotifications::class, 'index'])->name(
+  'pages-account-settings-notifications'
+);
+Route::get('/pages/account-settings-connections', [AccountSettingsConnections::class, 'index'])->name(
+  'pages-account-settings-connections'
+);
 Route::get('/pages/misc-error', [MiscError::class, 'index'])->name('pages-misc-error');
-Route::get('/pages/misc-under-maintenance', [MiscUnderMaintenance::class, 'index'])->name('pages-misc-under-maintenance');
+Route::get('/pages/misc-under-maintenance', [MiscUnderMaintenance::class, 'index'])->name(
+  'pages-misc-under-maintenance'
+);
 
 // authentication
 Route::get('/auth/login-basic', [LoginBasic::class, 'index'])->name('auth-login-basic');
@@ -127,11 +142,10 @@ Route::get('/form/layouts-horizontal', [HorizontalForm::class, 'index'])->name('
 // tables
 Route::get('/tables/basic', [TablesBasic::class, 'index'])->name('tables-basic');
 
-
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

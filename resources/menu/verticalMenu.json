@@ -19,6 +19,12 @@
       "slug": "news"
     },
     {
+      "url": "/stadium",
+      "name": "Stadium",
+      "icon": "menu-icon tf-icons bx bxs-flag-checkered",
+      "slug": "stadium"
+    },
+    {
       "name": "Layouts",
       "icon": "menu-icon tf-icons bx bx-layout",
       "slug": "layouts",
