@@ -45,6 +45,7 @@ use App\Http\Controllers\form_elements\BasicInput;
 use App\Http\Controllers\form_elements\InputGroups;
 use App\Http\Controllers\form_layouts\VerticalForm;
 use App\Http\Controllers\form_layouts\HorizontalForm;
+use App\Http\Controllers\MatchesController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\StadiumController;
 use App\Http\Controllers\tables\Basic as TablesBasic;
@@ -72,6 +73,7 @@ Route::get('/admins', [Admins::class, 'index'])
 // News
 Route::resource('/news', NewsController::class)->middleware(['auth', 'verified']);
 Route::resource('/stadium', StadiumController::class)->middleware(['auth', 'verified']);
+Route::resource('/matches', MatchesController::class)->middleware(['auth', 'verified']);
 
 // layout
 Route::get('/layouts/without-menu', [WithoutMenu::class, 'index'])->name('layouts-without-menu');
