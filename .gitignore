@@ -7,6 +7,9 @@
 /storage/*.key
 /vendor
 
+*.zip
+*.rar
+
 # .env
 .env.backup
 .env.production
