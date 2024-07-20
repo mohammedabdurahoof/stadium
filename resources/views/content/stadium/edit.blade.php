@@ -46,6 +46,20 @@
                         </div>
 
                         <div class="mb-3">
+                            <label class="form-label" for="state">state</label>
+                            <input type="text" class="form-control" id="state" name="state"
+                                placeholder="Enter state..." value="{{ old('state', $stadium->state) }}" />
+                            <x-input-error :messages="$errors->get('state')" class="mt-2" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="country">country</label>
+                            <input type="text" class="form-control" id="country" name="country"
+                                placeholder="Enter country..." value="{{ old('country', $stadium->country) }}" />
+                            <x-input-error :messages="$errors->get('country')" class="mt-2" />
+                        </div>
+
+                        <div class="mb-3">
                             <label class="form-label" for="address">Address</label>
                             <input type="text" class="form-control" id="address" name="address"
                                 placeholder="Enter Address..." value="{{ old('address', $stadium->address) }}" />

@@ -1,31 +1,31 @@
 {
   "menu": [
     {
-      "url": "/dashboard",
+      "url": "/admin/dashboard",
       "name": "Dashboards",
       "icon": "menu-icon tf-icons bx bx-home-circle",
       "slug": "dashboard"
     },
     {
-      "url": "/admins",
+      "url": "/admin/admins",
       "name": "Admins",
       "icon": "menu-icon tf-icons bx bx-user-circle",
       "slug": "admins"
     },
     {
-      "url": "/news",
+      "url": "/admin/news",
       "name": "News",
       "icon": "menu-icon tf-icons bx bx-news",
       "slug": "news.index"
     },
     {
-      "url": "/stadium",
+      "url": "/admin/stadium",
       "name": "Stadium",
       "icon": "menu-icon tf-icons bx bxs-flag-checkered",
       "slug": "stadium.index"
     },
     {
-      "url": "/matches",
+      "url": "/admin/matches",
       "name": "Matches",
       "icon": "menu-icon tf-icons bx bx-football",
       "slug": "matches.index"

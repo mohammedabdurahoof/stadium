@@ -14,6 +14,8 @@ class Stadium extends Model
     'image',
     'description',
     'location',
+    'state',
+    'country',
     'address',
     'capacity',
     'seats',

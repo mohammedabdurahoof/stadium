@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Matches;
+use App\Models\News;
 use App\Models\Stadium;
 use Illuminate\Http\Request;
 
@@ -51,12 +52,37 @@ class MatchesController extends Controller
       ->with('success', 'Match created successfully.');
   }
 
+  public function showAll()
+  {
+    $matchesAll = Matches::all();
+    $matches = Matches::latest()
+      ->take(4)
+      ->get();
+
+    return view('content.matches.matches', compact('matchesAll', 'matches'));
+  }
+
   /**
    * Display the specified resource.
    */
-  public function show(Matches $matches)
+  public function show(Matches $match)
   {
-    return view('content.matches.show', compact('matches'));
+
+    $popularStadium = Stadium::latest()
+      ->take(4)
+      ->get();
+
+    $latestNews = News::latest()
+      ->take(4)
+      ->get();
+
+    $matches = Matches::latest()
+      ->take(4)
+      ->get();
+
+      $match->load('stadium');
+
+    return view('content.matches.show', compact('match', 'matches', 'popularStadium', 'latestNews'));
   }
 
   /**

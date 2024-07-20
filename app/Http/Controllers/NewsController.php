@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Matches;
 use App\Models\News;
+use App\Models\Stadium;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -48,12 +50,36 @@ class NewsController extends Controller
       ->with('success', 'News created successfully.');
   }
 
+  public function showAll()
+  {
+    $news = News::all();
+    $matches = Matches::latest()
+      ->take(4)
+      ->get();
+
+    return view('content.news.news', compact('news', 'matches'));
+  }
+
   /**
    * Display the specified resource.
    */
+
+
   public function show(News $news)
   {
-    return view('content.news.show', compact('news'));
+    $popularStadium = Stadium::latest()
+      ->take(4)
+      ->get();
+
+    $latestNews = News::latest()
+      ->take(4)
+      ->get();
+
+    $matches = Matches::latest()
+      ->take(4)
+      ->get();
+
+    return view('content.news.show', compact('news', 'matches', 'popularStadium', 'latestNews'));
   }
 
   /**

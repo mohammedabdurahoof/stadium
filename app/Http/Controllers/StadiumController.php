@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Matches;
+use App\Models\News;
 use App\Models\Stadium;
 use Illuminate\Http\Request;
 
@@ -34,6 +36,8 @@ class StadiumController extends Controller
       'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
       'description' => 'required|string',
       'location' => 'required|string|max:255',
+      'state' => 'required|string|max:255',
+      'country' => 'required|string|max:255',
       'address' => 'required|string|max:255',
       'capacity' => 'required|integer|min:0',
       'seats' => 'required|integer|min:0',
@@ -61,12 +65,44 @@ class StadiumController extends Controller
       ->with('success', 'Stadium created successfully.');
   }
 
+  public function stadiumBy($state)
+  {
+    $stadium = Stadium::where('state', $state)->get();
+    $matches = Matches::latest()
+      ->take(4)
+      ->get();
+
+    return view('content.stadium.stadium', compact('stadium', 'matches'));
+  }
+
+
+  public function showAll()
+  {
+    $stadium = Stadium::all();
+    $matches = Matches::latest()
+      ->take(4)
+      ->get();
+
+    return view('content.stadium.stadium', compact('stadium', 'matches'));
+  }
+
   /**
    * Display the specified resource.
    */
   public function show(Stadium $stadium)
   {
-    return view('content.stadium.show', compact('stadium'));
+    $matches = Matches::latest()
+      ->take(4)
+      ->get();
+
+    $popularStadium = Stadium::latest()
+      ->take(4)
+      ->get();
+
+    $latestNews = News::latest()
+      ->take(4)
+      ->get();
+    return view('content.stadium.show', compact('stadium', 'matches', 'popularStadium', 'latestNews'));
   }
 
   /**
@@ -87,6 +123,8 @@ class StadiumController extends Controller
       'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
       'description' => 'required|string',
       'location' => 'required|string|max:255',
+      'state' => 'required|string|max:255',
+      'country' => 'required|string|max:255',
       'address' => 'required|string|max:255',
       'capacity' => 'required|integer|min:0',
       'seats' => 'required|integer|min:0',

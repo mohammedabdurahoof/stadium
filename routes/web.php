@@ -48,33 +48,35 @@ use App\Http\Controllers\form_layouts\HorizontalForm;
 use App\Http\Controllers\MatchesController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\StadiumController;
+use App\Http\Controllers\landing\Home;
 use App\Http\Controllers\tables\Basic as TablesBasic;
 
-Route::get('/', function () {
-  return view('welcome');
+// Home Page
+Route::get('/', [Home::class, 'index'])->name('home');
+Route::get('/news', [NewsController::class, 'showAll'])->name('news');
+Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.single');
+Route::get('/stadium', [StadiumController::class, 'showAll'])->name('stadium');
+Route::get('/stadium/{stadium}', [StadiumController::class, 'show'])->name('stadium.single');
+Route::get('/matches', [MatchesController::class, 'showAll'])->name('matches');
+Route::get('/matches/{match}', [MatchesController::class, 'show'])->name('matches.single');
+
+Route::get('/stadiumBy/{state}', [StadiumController::class, 'stadiumBy'])->name('stadiumBy');
+
+
+Route::middleware('auth')->prefix('admin')->group(function () {
+  // Main Page Route
+  Route::get('/dashboard', [Dashboard::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+  // Admins
+  Route::get('/admins', [Admins::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('admins');
+  Route::resource('/news', NewsController::class)->middleware(['auth', 'verified']);
+  Route::resource('/stadium', StadiumController::class)->middleware(['auth', 'verified']);
+  Route::resource('/matches', MatchesController::class)->middleware(['auth', 'verified']);
 });
-
-Route::get('/dashboard-2', function () {
-  return view('dashboard');
-})
-  ->middleware(['auth', 'verified'])
-  ->name('dashboard2');
-
-// Main Page Route
-Route::get('/dashboard', [Dashboard::class, 'index'])
-  ->middleware(['auth', 'verified'])
-  ->name('dashboard');
-
-// Admins
-Route::get('/admins', [Admins::class, 'index'])
-  ->middleware(['auth', 'verified'])
-  ->name('admins');
-
-// News
-Route::resource('/news', NewsController::class)->middleware(['auth', 'verified']);
-Route::resource('/stadium', StadiumController::class)->middleware(['auth', 'verified']);
-Route::resource('/matches', MatchesController::class)->middleware(['auth', 'verified']);
-
 // layout
 Route::get('/layouts/without-menu', [WithoutMenu::class, 'index'])->name('layouts-without-menu');
 Route::get('/layouts/without-navbar', [WithoutNavbar::class, 'index'])->name('layouts-without-navbar');

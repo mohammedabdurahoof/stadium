@@ -28,7 +28,6 @@
                         <tr>
                             <th>Image</th>
                             <th>Title</th>
-                            <th>Description</th>
                             <th>Location</th>
                             <th>Capacity</th>
                             <th>Opened</th>
@@ -43,7 +42,6 @@
                                     <img src="{{ asset('uploads/images/' . $item->image) }}" alt="image" width="50">
                                 </td>
                                 <td>{{ $item->stadium_name }}</td>
-                                <td>{{ $item->description }}</td>
                                 <td>{{ $item->location }}</td>
                                 <td>{{ $item->capacity }}</td>
                                 <td>{{ $item->opened }}</td>
