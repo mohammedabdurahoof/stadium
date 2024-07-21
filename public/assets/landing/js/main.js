@@ -407,6 +407,47 @@
     });
   });
 
+  $.ajax({
+    url: `/clubs/by-season/2023-24`,
+    method: 'GET',
+    dataType: 'json',
+    success: function (data) {
+      let tableBody = '';
+      let totalCrowds = 0;
+      let totalMatches = 0;
+      let highestCrowd = 0;
+      let lowestCrowd = data.length ? data[0].total_crowds : 0;
+
+      $.each(data, function (index, club) {
+        totalCrowds += club.total_crowds;
+        totalMatches += club.no_matches;
+        if (club.total_crowds > highestCrowd) highestCrowd = club.total_crowds;
+        if (club.total_crowds < lowestCrowd) lowestCrowd = club.total_crowds;
+
+        tableBody += `
+                  <tr>
+                      <td>${club.club_name}</td>
+                      <td>${club.no_matches}</td>
+                      <td>${club.total_crowds}</td>
+                      <td>${club.average_crowds}</td>
+                  </tr>
+              `;
+      });
+
+      const averageCrowds = totalMatches ? (totalCrowds / totalMatches).toFixed(2) : 0;
+
+      $('#clubs_table_body').html(tableBody);
+      $('#total_crowds').text(totalCrowds);
+      $('#no_matches').text(totalMatches);
+      $('#average_crowds').text(averageCrowds);
+      $('#highest_crowd').text(highestCrowd);
+      $('#lowest_crowd').text(lowestCrowd);
+    },
+    error: function (error) {
+      console.error('Error fetching data:', error);
+    }
+  });
+
   $('#season').on('change', function () {
     const season = this.value;
 

@@ -18,33 +18,32 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col-12 bg-dark rounded p-3 text-light">
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <h5> Season</h5>
+                                    <div class="d-flex justify-content-between tab">
+                                        <div class="">
+                                            <p> SEASON</p>
                                             <select class="form-control" id="season" name="season">
-                                                <option value="" disabled selected>Select Season...</option>
-                                                <option value="2023-24">2023-24</option>
+                                                <option value="2023-24" selected>2023-24</option>
                                                 <option value="2022-23">2022-23</option>
                                             </select>
                                         </div>
-                                        <div class="col-2">
-                                            <h5>Matches</h5>
+                                        <div class="">
+                                            <p>MATCHES</p>
                                             <p id="no_matches">0</p>
                                         </div>
-                                        <div class="col-2">
-                                            <h5>Total Crowds</h5>
+                                        <div class="">
+                                            <p>TOTAL</p>
                                             <p id="total_crowds">0</p>
                                         </div>
-                                        <div class="col-2">
-                                            <h5>Average Crowds</h5>
+                                        <div class="">
+                                            <p>AVG</p>
                                             <p id="average_crowds">0</p>
                                         </div>
-                                        <div class="col-2">
-                                            <h5>Highest Crowd</h5>
+                                        <div class="">
+                                            <p>HIGH</p>
                                             <p id="highest_crowd">0</p>
                                         </div>
-                                        <div class="col-2">
-                                            <h5>Lowest Crowd</h5>
+                                        <div class="">
+                                            <p>LOW</p>
                                             <p id="lowest_crowd">0</p>
                                         </div>
                                     </div>

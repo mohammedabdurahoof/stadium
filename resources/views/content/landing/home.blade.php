@@ -109,7 +109,7 @@
         <div class="banner-area pt-90 pb-90">
             <div class="container">
                 <h1 style="color: #fff; font-weight: 700">Check Here for Club Details</h1>
-                <a href="{{ route('matches') }}" class="genric-btn success-border circle">Show Club Details </a>
+                <a href="{{ route('clubs') }}" class="genric-btn success-border circle">Show Club Details </a>
             </div>
         </div>
         <!-- banner-last End -->

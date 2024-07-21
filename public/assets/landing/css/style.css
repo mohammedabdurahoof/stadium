@@ -6237,3 +6237,8 @@ BODY {
 .text-light p {
   color: inherit;
 }
+
+.tab div {
+  text-align: center;
+  padding: inherit;
+}
