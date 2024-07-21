@@ -26,7 +26,7 @@
                                         {{-- <li><a href="about.html">about</a></li> --}}
                                         <li><a href="{{ route('news') }}">News</a></li>
                                         <li><a href="{{ route('stadium') }}">Stadiums</a></li>
-                                        <li><a href="{{ route('matches') }}">Matches</a></li>
+                                        <li><a href="{{ route('clubs') }}">Clubs</a></li>
                                         {{-- <li><a href="#">Pages</a>
                                             <ul class="submenu">
                                                 <li><a href="blog.html">Blog</a></li>

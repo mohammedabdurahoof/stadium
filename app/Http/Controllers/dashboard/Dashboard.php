@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Club;
 use App\Models\Matches;
 use App\Models\News;
 use App\Models\Stadium;
@@ -16,7 +17,7 @@ class Dashboard extends Controller
     $adminsCount = User::count();
     $newsCount = News::count();
     $stadiumCount = Stadium::count();
-    $matchesCount = Matches::count();
-    return view('content.dashboard.dashboard', compact('adminsCount', 'newsCount', 'stadiumCount', 'matchesCount'));
+    $clubsCount = Club::count();
+    return view('content.dashboard.dashboard', compact('adminsCount', 'newsCount', 'stadiumCount', 'clubsCount'));
   }
 }

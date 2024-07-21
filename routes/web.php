@@ -18,6 +18,7 @@ use App\Http\Controllers\authentications\LoginBasic;
 use App\Http\Controllers\authentications\RegisterBasic;
 use App\Http\Controllers\authentications\ForgotPasswordBasic;
 use App\Http\Controllers\cards\CardBasic;
+use App\Http\Controllers\ClubController;
 use App\Http\Controllers\dashboard\Dashboard;
 use App\Http\Controllers\user_interface\Accordion;
 use App\Http\Controllers\user_interface\Alerts;
@@ -59,6 +60,8 @@ Route::get('/stadium', [StadiumController::class, 'showAll'])->name('stadium');
 Route::get('/stadium/{stadium}', [StadiumController::class, 'show'])->name('stadium.single');
 Route::get('/matches', [MatchesController::class, 'showAll'])->name('matches');
 Route::get('/matches/{match}', [MatchesController::class, 'show'])->name('matches.single');
+Route::get('/clubs', [ClubController::class, 'show'])->name('clubs');
+Route::get('/clubs/by-season/{season}', [ClubController::class, 'getBySeason'])->name('clubs.by-season');
 
 Route::get('/stadiumBy/{state}', [StadiumController::class, 'stadiumBy'])->name('stadiumBy');
 
@@ -76,6 +79,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
   Route::resource('/news', NewsController::class)->middleware(['auth', 'verified']);
   Route::resource('/stadium', StadiumController::class)->middleware(['auth', 'verified']);
   Route::resource('/matches', MatchesController::class)->middleware(['auth', 'verified']);
+  Route::resource('/clubs', ClubController::class)->middleware(['auth', 'verified']);
 });
 // layout
 Route::get('/layouts/without-menu', [WithoutMenu::class, 'index'])->name('layouts-without-menu');

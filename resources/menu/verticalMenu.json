@@ -25,10 +25,10 @@
       "slug": "stadium.index"
     },
     {
-      "url": "/admin/matches",
-      "name": "Matches",
+      "url": "/admin/clubs",
+      "name": "Clubs",
       "icon": "menu-icon tf-icons bx bx-football",
-      "slug": "matches.index"
+      "slug": "clubs.index"
     }
   ]
 }

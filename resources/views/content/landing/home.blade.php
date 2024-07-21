@@ -108,8 +108,8 @@
         <!-- banner-last Start -->
         <div class="banner-area pt-90 pb-90">
             <div class="container">
-                <h1 style="color: #fff; font-weight: 700">Check Here Latest Matchs</h1>
-                <a href="{{ route('matches') }}" class="genric-btn success-border circle">Show Latest Matchs </a>
+                <h1 style="color: #fff; font-weight: 700">Check Here for Club Details</h1>
+                <a href="{{ route('matches') }}" class="genric-btn success-border circle">Show Club Details </a>
             </div>
         </div>
         <!-- banner-last End -->
@@ -227,6 +227,13 @@
                 <div class="weekly3-wrapper">
                     <div class="row">
                         <div class="col-lg-12">
+                            <div class="section-tittle mb-30">
+                                <h3>Listed Stadiums</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
                             <div class="slider-wrapper">
                                 <!-- Slider -->
                                 <div class="row">
@@ -242,11 +249,12 @@
                                                                         <h1>{{ $item->total }}</h1>
                                                                         <P>
                                                                             {{-- Stadiums On <br>  --}}
-                                                                            {{ $item->state }}</P>
+                                                                            {{ $item->state }}
+                                                                        </P>
                                                                         {{-- <a class="show_btn"
                                                                         href="{{ route('stadiumBy', $item->state) }}"
-                                                                        style=" display: block;"><i
-                                                                            class="ti-arrow-right"></i></a> --}}
+                                                                style=" display: block;"><i class="ti-arrow-right"></i>
+                                                    </a> --}}
                                                                     </div>
                                                                 </div>
                                                             </a>

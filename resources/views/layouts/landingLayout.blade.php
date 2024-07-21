@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -10,28 +11,28 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
     <!-- CSS here -->
-@include('layouts/sections/landing_style')
-    
+    @include('layouts/sections/landing_style')
+
 </head>
 
 <body>
-<!-- Preloader Start -->
-@include('layouts/sections/preloader')
+    <!-- Preloader Start -->
+    @include('layouts/sections/preloader')
 
 
-{{-- header --}}
+    {{-- header --}}
 
-@include('layouts/sections/navbar/landing_header')
+    @include('layouts/sections/navbar/landing_header')
 
-<!-- Content -->
-@yield('content')
-<!--/ Content -->
+    <!-- Content -->
+    @yield('content')
+    <!--/ Content -->
 
-{{-- footer --}}
-@include('layouts/sections/footer/landing_footer')
+    {{-- footer --}}
+    @include('layouts/sections/footer/landing_footer')
 
-<!-- Search model Begin -->
-{{-- <div class="search-model-box">
+    <!-- Search model Begin -->
+    {{-- <div class="search-model-box">
     <div class="d-flex align-items-center h-100 justify-content-center">
         <div class="search-close-btn">+</div>
         <form class="search-model-form">
@@ -39,12 +40,13 @@
         </form>
     </div>
 </div> --}}
-<!-- Search model end -->
+    <!-- Search model end -->
 
-<!-- JS here -->
-@include('layouts/sections/landing_script')
+    <!-- JS here -->
+    @include('layouts/sections/landing_script')
 
-    
-    
+
+
 </body>
+
 </html>

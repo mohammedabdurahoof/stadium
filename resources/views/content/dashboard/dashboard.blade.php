@@ -100,13 +100,13 @@
                                 <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="cardOpt1">
-                                <a class="dropdown-item" href="{{ route('matches.index') }}">View More</a>
+                                <a class="dropdown-item" href="{{ route('clubs.index') }}">View More</a>
                                 {{-- <a class="dropdown-item" href="javascript:void(0);">Delete</a> --}}
                             </div>
                         </div>
                     </div>
-                    <span class="fw-semibold d-block mb-1">Matches</span>
-                    <h3 class="card-title mb-2">{{ $matchesCount }}</h3>
+                    <span class="fw-semibold d-block mb-1">Clubs</span>
+                    <h3 class="card-title mb-2">{{ $clubsCount }}</h3>
                 </div>
             </div>
         </div>

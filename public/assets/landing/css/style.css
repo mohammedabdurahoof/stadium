@@ -6233,3 +6233,7 @@ BODY {
 .banner-area {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/banner/bg-img.png') no-repeat fixed;
 }
+
+.text-light p {
+  color: inherit;
+}
