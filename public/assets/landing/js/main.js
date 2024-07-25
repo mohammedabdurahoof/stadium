@@ -407,67 +407,24 @@
     });
   });
 
-  $.ajax({
-    url: `/clubs/by-season/2023-24`,
-    method: 'GET',
-    dataType: 'json',
-    success: function (data) {
-      let tableBody = '';
-      let totalCrowds = 0;
-      let totalMatches = 0;
-      let highestCrowd = 0;
-      let lowestCrowd = data.length ? data[0].total_crowds : 0;
-
-      $.each(data, function (index, club) {
-        totalCrowds += club.total_crowds;
-        totalMatches += club.no_matches;
-        if (club.total_crowds > highestCrowd) highestCrowd = club.total_crowds;
-        if (club.total_crowds < lowestCrowd) lowestCrowd = club.total_crowds;
-
-        tableBody += `
-                  <tr>
-                      <td>${club.club_name}</td>
-                      <td>${club.no_matches}</td>
-                      <td>${club.total_crowds}</td>
-                      <td>${club.average_crowds}</td>
-                  </tr>
-              `;
-      });
-
-      const averageCrowds = totalMatches ? (totalCrowds / totalMatches).toFixed(2) : 0;
-
-      $('#clubs_table_body').html(tableBody);
-      $('#total_crowds').text(totalCrowds);
-      $('#no_matches').text(totalMatches);
-      $('#average_crowds').text(averageCrowds);
-      $('#highest_crowd').text(highestCrowd);
-      $('#lowest_crowd').text(lowestCrowd);
-    },
-    error: function (error) {
-      console.error('Error fetching data:', error);
-    }
-  });
-
-  $('#season').on('change', function () {
-    const season = this.value;
-
+  function fetchSeasonData(season) {
     $.ajax({
       url: `/clubs/by-season/${season}`,
       method: 'GET',
       dataType: 'json',
-      success: function (data) {
+      success: function (response) {
+        const { clubs, season } = response;
+
+        // Update season-related inputs
+        $('#no_matches').text(season.matches);
+        $('#total_crowds').text(season.total);
+        $('#average_crowds').text(season.avg);
+        $('#highest_crowd').text(season.high);
+        $('#lowest_crowd').text(season.low);
+
         let tableBody = '';
-        let totalCrowds = 0;
-        let totalMatches = 0;
-        let highestCrowd = 0;
-        let lowestCrowd = data.length ? data[0].total_crowds : 0;
 
-        $.each(data, function (index, club) {
-          totalCrowds += club.total_crowds;
-          totalMatches += club.no_matches;
-          if (club.total_crowds > highestCrowd) highestCrowd = club.total_crowds;
-          if (club.total_crowds < lowestCrowd) lowestCrowd = club.total_crowds;
-
+        $.each(clubs, function (index, club) {
           tableBody += `
                     <tr>
                         <td>${club.club_name}</td>
@@ -478,18 +435,127 @@
                 `;
         });
 
-        const averageCrowds = totalMatches ? (totalCrowds / totalMatches).toFixed(2) : 0;
-
         $('#clubs_table_body').html(tableBody);
-        $('#total_crowds').text(totalCrowds);
-        $('#no_matches').text(totalMatches);
-        $('#average_crowds').text(averageCrowds);
-        $('#highest_crowd').text(highestCrowd);
-        $('#lowest_crowd').text(lowestCrowd);
       },
       error: function (error) {
         console.error('Error fetching data:', error);
       }
     });
+  }
+
+  const seasonSelect = $('#season');
+  const defaultSeasonId = seasonSelect.val();
+
+  if (defaultSeasonId) {
+    fetchSeasonData(defaultSeasonId);
+  }
+
+  seasonSelect.change(function () {
+    const seasonId = $(this).val();
+    fetchSeasonData(seasonId);
   });
+
+  var properties = ['name', 'wins', 'draws', 'losses', 'total'];
+
+  $.each(properties, function (i, val) {
+    var orderClass = '';
+
+    $('#' + val).click(function (e) {
+      e.preventDefault();
+      $('.filter__link.filter__link--active').not(this).removeClass('filter__link--active');
+      $(this).toggleClass('filter__link--active');
+      $('.filter__link').removeClass('asc desc');
+
+      if (orderClass == 'desc' || orderClass == '') {
+        $(this).addClass('asc');
+        orderClass = 'asc';
+      } else {
+        $(this).addClass('desc');
+        orderClass = 'desc';
+      }
+
+      var parent = $(this).closest('.header__item');
+      var index = $('.header__item').index(parent);
+      var $table = $('.table-content');
+      var rows = $table.find('.table-row').get();
+      var isSelected = $(this).hasClass('filter__link--active');
+      var isNumber = $(this).hasClass('filter__link--number');
+
+      rows.sort(function (a, b) {
+        var x = $(a).find('.table-data').eq(index).text();
+        var y = $(b).find('.table-data').eq(index).text();
+
+        if (isNumber == true) {
+          if (isSelected) {
+            return x - y;
+          } else {
+            return y - x;
+          }
+        } else {
+          if (isSelected) {
+            if (x < y) return -1;
+            if (x > y) return 1;
+            return 0;
+          } else {
+            if (x > y) return -1;
+            if (x < y) return 1;
+            return 0;
+          }
+        }
+      });
+
+      $.each(rows, function (index, row) {
+        $table.append(row);
+      });
+
+      return false;
+    });
+  });
+
+  $(document).on('click', 'table thead tr th:not(.no-sort)', function () {
+    let table = $(this).parents('table');
+    let rows = $(this)
+      .parents('table')
+      .find('tbody tr')
+      .toArray()
+      .sort(TableComparer($(this).index()));
+    let dir = $(this).hasClass('sort-asc') ? 'desc' : 'asc';
+    if (dir == 'desc') {
+      rows = rows.reverse();
+    }
+    for (let i = 0; i < rows.length; i++) {
+      table.append(rows[i]);
+    }
+    table.find('thead tr th').removeClass('sort-asc').removeClass('sort-desc');
+    $(this)
+      .removeClass('sort-asc')
+      .removeClass('sort-desc')
+      .addClass('sort-' + dir);
+  });
+
+  function TableComparer(index) {
+    return function (a, b) {
+      let val_a = TableCellValue(a, index).replace(/\$\,/g, '');
+      let val_b = TableCellValue(b, index).replace(/\$\,/g, '');
+      let result = val_a.toString().localeCompare(val_b);
+      if ($.isNumeric(val_a) && $.isNumeric(val_b)) {
+        result = val_a - val_b;
+      }
+      if (isDate(val_a) && isDate(val_b)) {
+        let date_a = new Date(val_a);
+        let date_b = new Date(val_b);
+        result = date_a - date_b;
+      }
+      return result;
+    };
+  }
+
+  function TableCellValue(row, index) {
+    return $(row).children('td').eq(index).text();
+  }
+
+  function isDate(val) {
+    let d = new Date(val);
+    return !isNaN(d.valueOf());
+  }
 })(jQuery);

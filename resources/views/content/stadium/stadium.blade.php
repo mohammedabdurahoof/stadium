@@ -12,26 +12,34 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="section-tittle mb-30">
-                                        <h3>Stadium</h3>
+                                        <h3>Stadiums</h3>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                @foreach ($stadium as $item)
-                                    <div class="col-md-4 col-12 trending-top mt-10">
-                                        <div class="trend-top-img">
-                                            <img src="{{ asset('uploads/images/' . $item->image) }}" alt="">
-                                        </div>
-                                        <div class="trend-top-cap trend-top-cap2">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Stadium</th>
+                                            <th scope="col">City</th>
+                                            <th scope="col">Capacity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($stadium as $item)
+                                            <tr>
+                                                <td>
+                                                    <a
+                                                        href="{{ route('stadium.single', $item->id) }}">{{ $item->stadium_name }}</a>
+                                                </td>
+                                                <td>{{ $item->location }}</td>
+                                                <td>{{ $item->capacity }}</td>
+                                                </td>
+                                            </tr>
+                                        @endforeach
 
-                                            <h2><a
-                                                    href="{{ route('stadium.single', $item->id) }}">{{ $item->stadium_name }}</a>
-                                            </h2>
-                                            <p>Location: {{ $stadium[0]->location }} | Capacity: {{ $stadium[0]->capacity }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

@@ -72,6 +72,9 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+  Route::get('/season/{season}', [Dashboard::class, 'showSeason'])->name('showSeason');
+  Route::put('/season/{season}', [Dashboard::class, 'updateSeason'])->name('updateSeason');
+
   // Admins
   Route::get('/admins', [Admins::class, 'index'])
     ->middleware(['auth', 'verified'])

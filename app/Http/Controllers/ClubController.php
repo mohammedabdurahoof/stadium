@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Club;
 use App\Http\Controllers\Controller;
 use App\Models\Matches;
+use App\Models\Season;
 use Illuminate\Http\Request;
 
 class ClubController extends Controller
@@ -64,7 +65,11 @@ class ClubController extends Controller
     public function getBySeason($season)
     {
         $clubs = Club::where('season', $season)->get();
-        return response()->json($clubs);
+        $season = Season::where('season', $season)->first();
+        return response()->json([
+            'clubs' => $clubs,
+            'season' => $season
+        ]);
     }
 
     /**
