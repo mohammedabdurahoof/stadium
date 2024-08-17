@@ -37,9 +37,12 @@
                     <tbody class="table-border-bottom-0">
 
                         @foreach ($stadium as $item)
+                            @php
+                                $images = json_decode($item->image);
+                            @endphp
                             <tr>
                                 <td>
-                                    <img src="{{ asset('uploads/images/' . $item->image) }}" alt="image" width="50">
+                                    <img src="{{ asset('uploads/images/' . $images[0]) }}" alt="image" width="50">
                                 </td>
                                 <td>{{ $item->stadium_name }}</td>
                                 <td>{{ $item->location }}</td>

@@ -33,7 +33,8 @@ class StadiumController extends Controller
   {
     $request->validate([
       'stadium_name' => 'required|string|max:255',
-      'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+      'image' => 'required',
+      'image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
       'description' => 'required|string',
       'location' => 'required|string|max:255',
       'state' => 'required|string|max:255',
@@ -50,12 +51,18 @@ class StadiumController extends Controller
       'sports_played' => 'required|string|max:255',
     ]);
 
-    $imageName = time() . '.' . $request->image->extension();
+    $images = [];
 
-    $request->image->move(public_path('uploads/images'), $imageName);
+    if ($request->hasfile('image')) {
+      foreach ($request->file('image') as $file) {
+        $name = time() . rand(1, 100) . '.' . $file->extension();
+        $file->move(public_path('uploads/images'), $name);
+        $images[] = $name;
+      }
+    }
 
     $data = $request->all();
-    $data['image'] = $imageName;
+    $data['image'] = json_encode($images);
 
     // Create a new stadium with the modified request data
     Stadium::create($data);
@@ -120,7 +127,8 @@ class StadiumController extends Controller
   {
     $request->validate([
       'stadium_name' => 'required|string|max:255',
-      'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+      'image' => 'required',
+      'image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
       'description' => 'required|string',
       'location' => 'required|string|max:255',
       'state' => 'required|string|max:255',
@@ -139,18 +147,19 @@ class StadiumController extends Controller
 
     $data = $request->all();
 
-    if ($request->image) {
-      $oldImagePath = public_path('uploads/images/' . $stadium->image);
+    if ($request->hasFile('image')) {
+      // Get existing images from the database and decode them
+      $existingImages = json_decode($stadium->image, true) ?? [];
 
-      if (file_exists($oldImagePath)) {
-        unlink($oldImagePath);
+      // Process new images and add them to the existing ones
+      foreach ($request->file('image') as $file) {
+        $imageName = time() . rand(1, 100) . '.' . $file->extension();
+        $file->move(public_path('uploads/images'), $imageName);
+        $existingImages[] = $imageName; // Append new image to existing array
       }
 
-      $imageName = time() . '.' . $request->image->extension();
-
-      $request->image->move(public_path('uploads/images'), $imageName);
-
-      $data['image'] = $imageName;
+      // Save the updated images array back to the database
+      $data['image'] = json_encode($existingImages);
     }
 
     $stadium->update($data);
@@ -165,6 +174,19 @@ class StadiumController extends Controller
    */
   public function destroy(Stadium $stadium)
   {
+    // Decode the JSON array of images from the database
+    $images = json_decode($stadium->image, true);
+
+    // Delete each image from the server
+    if ($images) {
+      foreach ($images as $image) {
+        $imagePath = public_path('uploads/images/' . $image);
+        if (file_exists($imagePath)) {
+          unlink($imagePath); // Delete the image file
+        }
+      }
+    }
+
     $stadium->delete();
 
     return redirect()

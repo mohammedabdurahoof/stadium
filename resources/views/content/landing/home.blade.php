@@ -61,7 +61,8 @@
                                 <div class="row d-block d-md-none mb-2">
                                     <div class="weekly2-single">
                                         <div class="weekly2-img">
-                                            <img src="{{ asset('uploads/images/' . $stadium[0]->image) }}" alt="">
+                                            <img src="{{ asset('uploads/images/' . $stadium[0]->image[0]) }}"
+                                                alt="">
                                         </div>
                                         <div class="weekly2-caption">
                                             <h4><a
@@ -135,7 +136,7 @@
                                         <div class="trending-top mb-30">
                                             <div class="trending-top mr-10">
                                                 <div class="trend-top-img">
-                                                    <img src="{{ asset('uploads/images/' . $news[0]->featured_image) }}"
+                                                    <img src="{{ asset('uploads/images/' . $news[0]->featured_image[0]) }}"
                                                         alt="">
                                                 </div>
                                                 <div class="trend-top-cap trend-top-cap2">
@@ -152,7 +153,7 @@
                                         <div class="trending-top mb-30">
                                             <div class="trending-top">
                                                 <div class="trend-top-img">
-                                                    <img src="{{ asset('uploads/images/' . $news[1]->featured_image) }}"
+                                                    <img src="{{ asset('uploads/images/' . $news[1]->featured_image[0]) }}"
                                                         alt="">
                                                 </div>
                                                 <div class="trend-top-cap trend-top-cap2">
@@ -169,7 +170,7 @@
                                         <div class="trending-top mb-30">
                                             <div class="trending-top">
                                                 <div class="trend-top-img">
-                                                    <img src="{{ asset('uploads/images/' . $news[2]->featured_image) }}"
+                                                    <img src="{{ asset('uploads/images/' . $news[2]->featured_image[0]) }}"
                                                         alt="">
                                                 </div>
                                                 <div class="trend-top-cap trend-top-cap2">

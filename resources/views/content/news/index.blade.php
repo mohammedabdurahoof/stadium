@@ -35,10 +35,12 @@
                     </thead>
                     <tbody class="table-border-bottom-0">
                         @foreach ($news as $item)
+                            @php
+                                $images = json_decode($item->featured_image);
+                            @endphp
                             <tr>
                                 <td>
-                                    <img src="{{ asset('uploads/images/' . $item->featured_image) }}" alt="image"
-                                        width="50">
+                                    <img src="{{ asset('uploads/images/' . $images[0]) }}" alt="image" width="50">
                                 </td>
                                 <td>{{ $item->title }}</td>
                                 <td>

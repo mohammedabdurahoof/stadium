@@ -24,9 +24,9 @@
                             <x-input-error :messages="$errors->get('title')" class="mt-2" />
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="image">Image</label>
-                            <input type="file" class="form-control" id="image" name="image"
-                                placeholder="Upload Image Here" />
+                            <label class="form-label" for="image">Images</label>
+                            <input type="file" class="form-control" id="image" name="image[]" multiple
+                                placeholder="Upload Images Here" accept="image/*" />
                             <x-input-error :messages="$errors->get('image')" class="mt-2" />
                         </div>
                         <div class="mb-3">

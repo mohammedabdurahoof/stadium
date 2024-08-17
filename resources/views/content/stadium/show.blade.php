@@ -4,6 +4,10 @@
 
 @section('content')
 
+    @php
+        $images = json_decode($stadium->image);
+    @endphp
+
     <main>
         <!-- About US Start -->
         <div class="about-area2 gray-bg pt-60 pb-60">
@@ -13,7 +17,7 @@
                         <!-- Trending Tittle -->
                         <div class="about-right mb-90">
                             <div class="about-img">
-                                <img src="{{ asset('uploads/images/' . $stadium->image) }}" alt="" />
+                                <img src="{{ asset('uploads/images/' . $images[0]) }}" alt="" />
                             </div>
                             <div class="heading-news mb-30 pt-30">
                                 <h3>{{ $stadium->stadium_name }}</h3>
@@ -24,7 +28,23 @@
                                 </p>
 
                             </div>
+                            <div class="row">
+                                @if (isset($images[1]))
+                                    <div class="col-md-6">
+                                        <div class="about-img">
+                                            <img src="{{ asset('uploads/images/' . $images[1]) }}" alt="" />
+                                        </div>
+                                    </div>
+                                @endif
+                                @if (isset($images[2]))
+                                    <div class="col-md-6">
+                                        <div class="about-img">
+                                            <img src="{{ asset('uploads/images/' . $images[2]) }}" alt="" />
+                                        </div>
+                                    </div>
+                                @endif
 
+                            </div>
                         </div>
                         <div class="heading-news mb-30 pt-30">
                             <h4>{{ $stadium->stadium_name }} Details</h4>

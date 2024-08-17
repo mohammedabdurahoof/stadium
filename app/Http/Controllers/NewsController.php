@@ -34,14 +34,23 @@ class NewsController extends Controller
     $request->validate([
       'title' => 'required',
       'content' => 'required',
-      'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+      'image' => 'required',
+      'image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
 
-    $imageName = time() . '.' . $request->image->extension();
+    $images = [];
 
-    $request->image->move(public_path('uploads/images'), $imageName);
+    if ($request->hasfile('image')) {
+      foreach ($request->file('image') as $file) {
+        $name = time() . rand(1, 100) . '.' . $file->extension();
+        $file->move(public_path('uploads/images'), $name);
+        $images[] = $name;
+      }
+    }
 
-    $request['featured_image'] = $imageName;
+
+
+    $request['featured_image'] = json_encode($images);
 
     News::create($request->all());
 
@@ -98,20 +107,23 @@ class NewsController extends Controller
     $request->validate([
       'title' => 'required',
       'content' => 'required',
-      'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+      'image' => 'required',
+      'image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
-    if ($request->image) {
-      $oldImagePath = public_path('uploads/images/' . $news->featured_image);
 
-      if (file_exists($oldImagePath)) {
-        unlink($oldImagePath);
+    if ($request->hasFile('image')) {
+      // Get existing images from the database and decode them
+      $existingImages = json_decode($news->featured_image, true) ?? [];
+
+      // Process new images and add them to the existing ones
+      foreach ($request->file('image') as $file) {
+        $imageName = time() . rand(1, 100) . '.' . $file->extension();
+        $file->move(public_path('uploads/images'), $imageName);
+        $existingImages[] = $imageName; // Append new image to existing array
       }
 
-      $imageName = time() . '.' . $request->image->extension();
-
-      $request->image->move(public_path('uploads/images'), $imageName);
-
-      $request['featured_image'] = $imageName;
+      // Save the updated images array back to the database
+      $request['featured_image'] = json_encode($existingImages);
     }
 
     $news->update($request->all());
@@ -126,6 +138,19 @@ class NewsController extends Controller
    */
   public function destroy(News $news)
   {
+    // Decode the JSON array of images from the database
+    $images = json_decode($news->featured_image, true);
+
+    // Delete each image from the server
+    if ($images) {
+      foreach ($images as $image) {
+        $imagePath = public_path('uploads/images/' . $image);
+        if (file_exists($imagePath)) {
+          unlink($imagePath); // Delete the image file
+        }
+      }
+    }
+
     $news->delete();
 
     return redirect()
