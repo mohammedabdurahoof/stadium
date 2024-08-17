@@ -34,4 +34,11 @@ class Home extends Controller
       ->get();
     return view('content.landing.about', compact('matches'));
   }
+  public function contact()
+  {
+    $matches = Matches::latest()
+      ->take(4)
+      ->get();
+    return view('content.landing.contact', compact('matches'));
+  }
 }

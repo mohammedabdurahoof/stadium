@@ -55,6 +55,7 @@ use App\Http\Controllers\tables\Basic as TablesBasic;
 // Home Page
 Route::get('/', [Home::class, 'index'])->name('home');
 Route::get('/about', [Home::class, 'about'])->name('about');
+Route::get('/contact', [Home::class, 'contact'])->name('contact');
 Route::get('/news', [NewsController::class, 'showAll'])->name('news');
 Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.single');
 Route::get('/stadium', [StadiumController::class, 'showAll'])->name('stadium');

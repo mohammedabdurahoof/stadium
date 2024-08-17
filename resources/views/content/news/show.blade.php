@@ -19,7 +19,7 @@
                                 <h3>{{ $news->title }}</h3>
                             </div>
                             <div class="about-prea">
-                                <p class="about-pera1 mb-25">
+                                <p class="about-pera1 mb-25 text-right">
                                     {{ $news->content }}
                                 </p>
 
