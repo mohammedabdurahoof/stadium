@@ -26,4 +26,12 @@ class Home extends Controller
 
     return view('content.landing.home', compact('news', 'stadium', 'stadiumByState', 'matches'));
   }
+
+  public function about()
+  {
+    $matches = Matches::latest()
+      ->take(4)
+      ->get();
+    return view('content.landing.about', compact('matches'));
+  }
 }

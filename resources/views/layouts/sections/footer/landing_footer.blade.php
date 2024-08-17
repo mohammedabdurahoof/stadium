@@ -32,11 +32,9 @@
 
                                 <ul>
                                     <li><a href="/about"><i class="fa fa-angle-right"></i> About</a></li>
-                                    <li><a href="/contact"><i class="fa fa-angle-right"></i> Contact us</a></li>
+                                    <li><a href="/clubs"><i class="fa fa-angle-right"></i> Clubs</a></li>
                                     <li><a href="/news"><i class="fa fa-angle-right"></i> News</a></li>
-                                    <li><a href="/events"><i class="fa fa-angle-right"></i> Events</a></li>
-                                    <li><a href="/faq"><i class="fa fa-angle-right"></i> FAQ</a></li>
-                                    <li><a href="/policy"><i class="fa fa-angle-right"></i> Policy</a></li>
+                                    <li><a href="/stadium"><i class="fa fa-angle-right"></i> Stadium</a></li>
                                 </ul>
                             </div>
                         </div>
