@@ -27,7 +27,8 @@
 <script src="{{ asset('assets/landing/js/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('assets/landing/js/mail-script.js') }}"></script>
 <script src="{{ asset('assets/landing/js/jquery.ajaxchimp.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-<!-- Jquery Plugins, main Jquery -->    
+<!-- Jquery Plugins, main Jquery -->
 <script src="{{ asset('assets/landing/js/plugins.js') }}"></script>
 <script src="{{ asset('assets/landing/js/main.js') }}"></script>

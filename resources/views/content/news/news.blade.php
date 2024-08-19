@@ -18,12 +18,18 @@
                             </div>
                             <div class="row">
                                 @foreach ($news as $item)
-                                    @php
-                                        $images = json_decode($item->featured_image);
-                                    @endphp
                                     <div class="col-md-4 col-12 trending-top mt-10">
                                         <div class="trend-top-img">
-                                            <img src="{{ asset('uploads/images/' . $images[0]) }}" alt="">
+                                            <div class="swiper mySwiper">
+                                                <div class="swiper-wrapper">
+                                                    @foreach (json_decode($item->featured_image) as $image)
+                                                        <div class="swiper-slide"><img
+                                                                src="{{ asset('uploads/images/' . $image) }}"
+                                                                alt=""></div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            {{-- <img src="{{ asset('uploads/images/' . $images[0]) }}" alt=""> --}}
                                         </div>
                                         <div class="trend-top-cap trend-top-cap2">
 

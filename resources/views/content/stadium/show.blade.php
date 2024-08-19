@@ -4,10 +4,6 @@
 
 @section('content')
 
-    @php
-        $images = json_decode($stadium->image);
-    @endphp
-
     <main>
         <!-- About US Start -->
         <div class="about-area2 gray-bg pt-60 pb-60">
@@ -17,7 +13,15 @@
                         <!-- Trending Tittle -->
                         <div class="about-right mb-90">
                             <div class="about-img">
-                                <img src="{{ asset('uploads/images/' . $images[0]) }}" alt="" />
+                                <div class="swiper mySwiper">
+                                    <div class="swiper-wrapper">
+                                        @foreach (json_decode($stadium->image) as $image)
+                                            <div class="swiper-slide"><img src="{{ asset('uploads/images/' . $image) }}"
+                                                    alt=""></div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                {{-- <img src="{{ asset('uploads/images/' . $images[0]) }}" alt="" /> --}}
                             </div>
                             <div class="heading-news mb-30 pt-30">
                                 <h3>{{ $stadium->stadium_name }}</h3>
@@ -26,23 +30,6 @@
                                 <p class="about-pera1 mb-25 text-right">
                                     {{ $stadium->description }}
                                 </p>
-
-                            </div>
-                            <div class="row">
-                                @if (isset($images[1]))
-                                    <div class="col-md-6">
-                                        <div class="about-img">
-                                            <img src="{{ asset('uploads/images/' . $images[1]) }}" alt="" />
-                                        </div>
-                                    </div>
-                                @endif
-                                @if (isset($images[2]))
-                                    <div class="col-md-6">
-                                        <div class="about-img">
-                                            <img src="{{ asset('uploads/images/' . $images[2]) }}" alt="" />
-                                        </div>
-                                    </div>
-                                @endif
 
                             </div>
                         </div>

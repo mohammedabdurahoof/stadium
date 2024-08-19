@@ -11,3 +11,4 @@
 <link rel="stylesheet" href="{{ asset('assets/landing/css/nice-select.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/landing/css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/landing/css/style.scss') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />

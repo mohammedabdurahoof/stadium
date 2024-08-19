@@ -61,8 +61,18 @@
                                 <div class="row d-block d-md-none mb-2">
                                     <div class="weekly2-single">
                                         <div class="weekly2-img">
-                                            <img src="{{ asset('uploads/images/' . $stadium[0]->image[0]) }}"
-                                                alt="">
+                                            <!-- Swiper -->
+                                            <div class="swiper mySwiper">
+                                                <div class="swiper-wrapper">
+                                                    @foreach (json_decode($stadium[0]->image) as $image)
+                                                        <div class="swiper-slide"><img
+                                                                src="{{ asset('uploads/images/' . $image) }}"
+                                                                alt=""></div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            {{-- <img src="{{ asset('uploads/images/' . json_decode($stadium[0]->image)[0]) }}"
+                                                alt=""> --}}
                                         </div>
                                         <div class="weekly2-caption">
                                             <h4><a
@@ -81,8 +91,18 @@
                                             @foreach ($stadium as $item)
                                                 <div class="weekly2-single">
                                                     <div class="weekly2-img">
-                                                        <img src="{{ asset('uploads/images/' . $item->image) }}"
-                                                            alt="">
+                                                        <!-- Swiper -->
+                                                        <div class="swiper mySwiper">
+                                                            <div class="swiper-wrapper">
+                                                                @foreach (json_decode($item->image) as $image)
+                                                                    <div class="swiper-slide"><img
+                                                                            src="{{ asset('uploads/images/' . $image) }}"
+                                                                            alt=""></div>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                        {{-- <img src="{{ asset('uploads/images/' . json_decode($item->image)[0]) }}"
+                                                            alt=""> --}}
                                                     </div>
                                                     <div class="weekly2-caption">
                                                         <h4><a
@@ -136,8 +156,18 @@
                                         <div class="trending-top mb-30">
                                             <div class="trending-top mr-10">
                                                 <div class="trend-top-img">
-                                                    <img src="{{ asset('uploads/images/' . $news[0]->featured_image[0]) }}"
-                                                        alt="">
+                                                    <!-- Swiper -->
+                                                    <div class="swiper mySwiper">
+                                                        <div class="swiper-wrapper">
+                                                            @foreach (json_decode($news[0]->featured_image) as $image)
+                                                                <div class="swiper-slide"><img
+                                                                        src="{{ asset('uploads/images/' . $image) }}"
+                                                                        alt=""></div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                    {{-- <img src="{{ asset('uploads/images/' . json_decode($news[0]->featured_image)[0]) }}"
+                                                        alt=""> --}}
                                                 </div>
                                                 <div class="trend-top-cap trend-top-cap2">
 
@@ -153,8 +183,18 @@
                                         <div class="trending-top mb-30">
                                             <div class="trending-top">
                                                 <div class="trend-top-img">
-                                                    <img src="{{ asset('uploads/images/' . $news[1]->featured_image[0]) }}"
-                                                        alt="">
+                                                    <!-- Swiper -->
+                                                    <div class="swiper mySwiper">
+                                                        <div class="swiper-wrapper">
+                                                            @foreach (json_decode($news[1]->featured_image) as $image)
+                                                                <div class="swiper-slide"><img
+                                                                        src="{{ asset('uploads/images/' . $image) }}"
+                                                                        alt=""></div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                    {{-- <img src="{{ asset('uploads/images/' . json_decode($news[1]->featured_image)[0]) }}"
+                                                        alt=""> --}}
                                                 </div>
                                                 <div class="trend-top-cap trend-top-cap2">
 
@@ -170,8 +210,18 @@
                                         <div class="trending-top mb-30">
                                             <div class="trending-top">
                                                 <div class="trend-top-img">
-                                                    <img src="{{ asset('uploads/images/' . $news[2]->featured_image[0]) }}"
-                                                        alt="">
+                                                    <!-- Swiper -->
+                                                    <div class="swiper mySwiper">
+                                                        <div class="swiper-wrapper">
+                                                            @foreach (json_decode($news[2]->featured_image) as $image)
+                                                                <div class="swiper-slide"><img
+                                                                        src="{{ asset('uploads/images/' . $image) }}"
+                                                                        alt=""></div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                    {{-- <img src="{{ asset('uploads/images/' . json_decode($news[2]->featured_image)[0]) }}"
+                                                        alt=""> --}}
                                                 </div>
                                                 <div class="trend-top-cap trend-top-cap2">
 
@@ -191,8 +241,18 @@
                                         <div class="col-4">
                                             <div class="trending-top mr-10">
                                                 <div class="trend-top-img">
-                                                    <img src="{{ asset('uploads/images/' . $item->featured_image) }}"
-                                                        alt="">
+                                                    <!-- Swiper -->
+                                                    <div class="swiper mySwiper">
+                                                        <div class="swiper-wrapper">
+                                                            @foreach (json_decode($item->featured_image) as $image)
+                                                                <div class="swiper-slide"><img
+                                                                        src="{{ asset('uploads/images/' . $image) }}"
+                                                                        alt=""></div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                    {{-- <img src="{{ asset('uploads/images/' . json_decode($item->featured_image)[0]) }}"
+                                                        alt=""> --}}
                                                 </div>
                                                 <div class="trend-top-cap trend-top-cap2">
 
@@ -277,4 +337,5 @@
 
 
     </main>
+
 @endsection
