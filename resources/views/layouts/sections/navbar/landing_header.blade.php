@@ -7,17 +7,20 @@
                 style="position: {{ Route::currentRouteName() === 'home' ? 'absolute' : 'relative' }}">
                 <div class="container">
                     <div class="row align-items-center" style="padding: 0.5rem 0">
-                        <div class="col-xl-4 col-lg-4 col-md-12 header-flex">
+                        <div class="col-xl-4 col-lg-4 col-md-4 header-flex">
                             <!-- sticky -->
                             <div>
                                 <a href="/">
-                                    <h1 id="logo" style="font-weight: 900;">Stadium</h1>
+                                    {{-- <h1 id="logo" style="font-weight: 900;">Stadium</h1> --}}
+                                    <img src="{{ asset('assets/img/logo_dark.png') }}" alt="logo" srcset=""
+                                        width="80" id="logo_dark">
+                                    <img src="{{ asset('assets/img/logo_light.png') }}" alt="logo" srcset=""
+                                        width="80" id="logo_light" style="display: none">
                                 </a>
-                                {{-- <a href="/"><img src="{{ asset('assets/landing/img/logo/logo.png') }}" alt=""></a> --}}
                             </div>
 
                         </div>
-                        <div class="col-xl-8 col-lg-8 col-md-12 d-none d-md-block">
+                        <div class="col-xl-8 col-lg-8 col-md-8 d-none d-md-block">
                             <!-- Main-menu -->
                             <div class="main-menu d-none d-md-block f-right">
                                 <nav>

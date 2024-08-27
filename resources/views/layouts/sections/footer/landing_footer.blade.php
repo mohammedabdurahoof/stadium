@@ -9,7 +9,9 @@
                             <div class="footer-logo">
                                 {{-- <a href="/"><img src="{{ asset('assets/landing/img/logo/logo2_footer.png') }}" alt=""></a> --}}
                                 <a href="/">
-                                    <h1 style="font-weight: 900">Stadium</h1>
+                                    {{-- <h1 style="font-weight: 900">Stadium</h1> --}}
+                                    <img src="{{ asset('assets/img/logo_light.png') }}" alt="logo" srcset=""
+                                        width="100">
                                 </a>
 
                             </div>

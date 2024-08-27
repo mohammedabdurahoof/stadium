@@ -311,6 +311,8 @@
     ? $('.slicknav_icon-bar').attr('style', 'background-color: #fff !important')
     : $('.slicknav_icon-bar').attr('style', 'background-color: #051441 !important');
   /* 7.  Custom Sticky Menu  */
+  currentRoute == 'home' && $('#logo_dark').hide();
+  currentRoute == 'home' && $('#logo_light').show();
   $(window).on('scroll', function () {
     var scroll = $(window).scrollTop();
 
@@ -320,12 +322,16 @@
       currentRoute == 'home' && $('.slicknav_icon-bar').attr('style', 'background-color: #fff !important');
       currentRoute == 'home' && $('#navigation > li > a').css('color', '#fff');
       currentRoute == 'home' && $('#navigation > li > a').removeClass('fixed-header');
+      currentRoute == 'home' && $('#logo_dark').hide();
+      currentRoute == 'home' && $('#logo_light').show();
     } else {
       $('.header-sticky').addClass('sticky-bar');
       currentRoute == 'home' && $('#logo').css('color', '#051441');
       currentRoute == 'home' && $('.slicknav_icon-bar').attr('style', 'background-color: #051441 !important');
       currentRoute == 'home' && $('#navigation > li > a').css('color', '#051441');
       currentRoute == 'home' && $('#navigation > li > a').addClass('fixed-header');
+      currentRoute == 'home' && $('#logo_dark').show();
+      currentRoute == 'home' && $('#logo_light').hide();
     }
   });
 

@@ -43,9 +43,9 @@
                 <div class="weekly2-wrapper">
                     <div class="row">
                         <!-- Banner -->
-                        <div class="col-lg-3">
+                        <div class="col-lg-3" id="home_banner">
                             <div class="home-banner2 d-none d-lg-block">
-                                <img src="{{ asset('assets/landing/img/gallery/body_card2.png') }}" alt="">
+                                {{-- <img src="{{ asset('assets/img/logo_banner.png') }}" alt=""> --}}
                             </div>
                         </div>
                         <div class="col-lg-9">
@@ -130,7 +130,7 @@
         <div class="banner-area pt-90 pb-90">
             <div class="container">
                 <h1 style="color: #fff; font-weight: 700">Check Here for Club Details</h1>
-                <a href="{{ route('clubs') }}" class="genric-btn success-border circle">Show Club Details </a>
+                <a href="{{ route('clubs') }}" class="genric-btn success circle">Show Club Details </a>
             </div>
         </div>
         <!-- banner-last End -->
