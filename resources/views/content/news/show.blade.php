@@ -45,10 +45,10 @@
                                 <!-- Popular post -->
                                 @foreach ($latestNews as $item)
                                     <div class="whats-right-single mb-20">
-                                        <div class="whats-right-img">
+                                        {{-- <div class="whats-right-img">
                                             <img src="{{ asset('uploads/images/' . $item->featured_image) }}" alt=""
                                                 width="100" />
-                                        </div>
+                                        </div> --}}
                                         <div class="whats-right-cap">
                                             <h4>
                                                 <a href="{{ route('news.single', $item->id) }}">{{ $item->title }}</a>
@@ -67,10 +67,10 @@
                                 <!-- Popular post -->
                                 @foreach ($popularStadium as $item)
                                     <div class="whats-right-single mb-20">
-                                        <div class="whats-right-img">
+                                        {{-- <div class="whats-right-img">
                                             <img src="{{ asset('uploads/images/' . $item->image) }}" alt=""
                                                 width="100" />
-                                        </div>
+                                        </div> --}}
                                         <div class="whats-right-cap">
                                             <h4>
                                                 <a

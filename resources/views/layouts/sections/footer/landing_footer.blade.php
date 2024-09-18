@@ -17,10 +17,12 @@
                             </div>
                             <div class="footer-tittle">
                                 <div class="footer-pera">
-                                    <p class="info1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                    <p class="info1" style="text-align: left">Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit, sed do
                                         eiusmod tempor incididunt ut labore.</p>
-                                    <p class="info2">Lorem ipsum dolor sit amet, consectetur</p>
-                                    <p class="info2">Phone: +91 1234567890</p>
+                                    <p class="info2" style="text-align: left">Lorem ipsum dolor sit amet, consectetur
+                                    </p>
+                                    <p class="info2" style="text-align: left">Phone: +91 1234567890</p>
                                 </div>
                             </div>
                         </div>
@@ -28,7 +30,7 @@
                     <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Quik Links</h4>
+                                <h4 style="text-align: left">Quik Links</h4>
                             </div>
                             <div class="footer_link">
 
@@ -44,15 +46,15 @@
                     <div class="col-xl-4 col-lg-4 col-md-5 col-sm-7">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Popular Matches</h4>
+                                <h4 style="text-align: left">Popular Matches</h4>
                             </div>
                             @foreach ($matches as $item)
                                 <div class="whats-right-single mb-20">
 
                                     <div class="whats-right-cap">
-                                        <h4><a href="latest_news.html">{{ $item->name }}</a>
+                                        <h4 style="text-align: left"><a href="latest_news.html">{{ $item->name }}</a>
                                         </h4>
-                                        <p>{{ $item->team1 }} | {{ $item->team2 }}</p>
+                                        <p style="text-align: left">{{ $item->team1 }} | {{ $item->team2 }}</p>
                                     </div>
                                 </div>
                             @endforeach
@@ -70,7 +72,7 @@
                     <div class="row d-flex align-items-center">
                         <div class="col-xl-12">
                             <div class="footer-copy-right text-center">
-                                <p>
+                                <p style="text-align: center">
                                     Copyright &copy;
                                     <script>
                                         document.write(new Date().getFullYear());

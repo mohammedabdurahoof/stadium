@@ -7,7 +7,7 @@
         <div class="main">
             <div class="container">
 
-                <h3 style="color: #fff">WELCOME TO HOME OF</h3>
+                <h3 style="color: #fff; text-align: center">WELCOME TO HOME OF</h3>
                 {{-- <h1 style="color: #fff">STADIUM</h1> --}}
                 <div class="text1">
 
@@ -31,9 +31,9 @@
 
                     </svg>
                 </div>
-                <p style="color: #fff;">
+                <p style="color: #fff; text-align: center">
                     <i> "Football is like life. It requires perseverance, self-denial, hard work, sacrifice, dedication, and
-                        respect for authority."</i> <br> – <b style="color: #fff">Vince Lombardi</b>
+                        respect for authority."</i> <br> – <b style="color: #fff; text-align: center">Vince Lombardi</b>
                 </p>
             </div>
         </div>
@@ -54,7 +54,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="small-tittle mb-30">
-                                            <h4>Popular Stadiums</h4>
+                                            <h4 style="text-align: left">Popular Stadiums</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -129,7 +129,7 @@
         <!-- banner-last Start -->
         <div class="banner-area pt-90 pb-90">
             <div class="container">
-                <h1 style="color: #fff; font-weight: 700">Check Here for Club Details</h1>
+                <h1 style="color: #fff; font-weight: 700; text-align: left">Check Here for Club Details</h1>
                 <a href="{{ route('clubs') }}" class="genric-btn success circle">Show Club Details </a>
             </div>
         </div>
@@ -146,7 +146,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="section-tittle mb-30">
-                                        <h3>Trending News</h3>
+                                        <h3 style="text-align: left">Trending News</h3>
                                     </div>
                                 </div>
                             </div>
@@ -289,7 +289,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="section-tittle mb-30">
-                                <h3>Listed Stadiums</h3>
+                                <h3 style="text-align: left">Listed Stadiums</h3>
                             </div>
                         </div>
                     </div>
@@ -307,8 +307,9 @@
                                                             <a href="{{ route('stadiumBy', $item->state) }}">
                                                                 <div class="card">
                                                                     <div class="card-body" style="padding: 0.25rem">
-                                                                        <h1>{{ $item->total }}</h1>
-                                                                        <P>
+                                                                        <h1 style="text-align: center">{{ $item->total }}
+                                                                        </h1>
+                                                                        <P style="text-align: center">
                                                                             {{-- Stadiums On <br>  --}}
                                                                             {{ $item->state }}
                                                                         </P>

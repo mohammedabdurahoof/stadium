@@ -142,6 +142,7 @@ h6 {
   font-style: normal;
   font-weight: 500;
   text-transform: normal;
+  text-align: right;
 }
 p {
   font-family: 'Roboto', sans-serif;
@@ -150,6 +151,7 @@ p {
   line-height: 30px;
   margin-bottom: 15px;
   font-weight: normal;
+  text-align: right;
 }
 .bg-img-1 {
   background-image: url(../img/slider/slider-img-1.jpg);
@@ -2900,7 +2902,7 @@ hr {
 .whats-news-area .whats-right-single,
 .about-area2 .whats-right-single,
 .contact-section .whats-right-single {
-  display: flex;
+  /* display: flex; */
 }
 /* @media (max-width: 575px) {
   .whats-news-area .whats-right-single,

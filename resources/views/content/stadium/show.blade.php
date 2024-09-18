@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="heading-news mb-30 pt-30">
-                            <h4>{{ $stadium->stadium_name }} Details</h4>
+                            <h4 style="text-align: left">{{ $stadium->stadium_name }} Details</h4>
                         </div>
                         <table class="table table-bordered" style="width: fit-content;">
                             <tbody>
@@ -102,10 +102,10 @@
                                 <!-- Popular post -->
                                 @foreach ($latestNews as $item)
                                     <div class="whats-right-single mb-20">
-                                        <div class="whats-right-img">
+                                        {{-- <div class="whats-right-img">
                                             <img src="{{ asset('uploads/images/' . $item->featured_image) }}"
                                                 alt="" width="100" />
-                                        </div>
+                                        </div> --}}
                                         <div class="whats-right-cap">
                                             <h4>
                                                 <a href="{{ route('news.single', $item->id) }}">{{ $item->title }}</a>
@@ -124,10 +124,10 @@
                                 <!-- Popular post -->
                                 @foreach ($popularStadium as $item)
                                     <div class="whats-right-single mb-20">
-                                        <div class="whats-right-img">
+                                        {{-- <div class="whats-right-img">
                                             <img src="{{ asset('uploads/images/' . $item->image) }}" alt=""
                                                 width="100" />
-                                        </div>
+                                        </div> --}}
                                         <div class="whats-right-cap">
                                             <h4>
                                                 <a

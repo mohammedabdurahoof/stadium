@@ -12,7 +12,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="section-tittle mb-30">
-                                        <h3>Stadiums</h3>
+                                        <h3 style="text-align: left">Stadiums</h3>
                                     </div>
                                 </div>
                             </div>
