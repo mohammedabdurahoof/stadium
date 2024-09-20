@@ -7,14 +7,14 @@
         <div class="main">
             <div class="container">
 
-                <h3 style="color: #fff; text-align: center">WELCOME TO HOME OF</h3>
+                {{-- <h3 style="color: #fff; text-align: center">WELCOME TO HOME OF</h3> --}}
                 {{-- <h1 style="color: #fff">STADIUM</h1> --}}
                 <div class="text1">
 
                     <svg viewBox="0 0 800 150">
                         <symbol id="s-text">
                             <text text-anchor="start" x="10" y="130" class="text--line">
-                                STADIUM
+                                ELMUDRAJ
                             </text>
 
 
@@ -31,10 +31,10 @@
 
                     </svg>
                 </div>
-                <p style="color: #fff; text-align: center">
+                {{-- <p style="color: #fff; text-align: center">
                     <i> "Football is like life. It requires perseverance, self-denial, hard work, sacrifice, dedication, and
                         respect for authority."</i> <br> – <b style="color: #fff; text-align: center">Vince Lombardi</b>
-                </p>
+                </p> --}}
             </div>
         </div>
         <!--   Upcomming Events -->
